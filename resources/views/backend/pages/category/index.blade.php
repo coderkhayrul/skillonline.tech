@@ -56,10 +56,18 @@
                                         <td class="text-center">
                                             <a title="Edit" href="{{ route('admin.category.edit', $category->bc_slug) }}"
                                                 class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
-                                            <a href="#" title="Delete" class="btn btn-sm btn-danger"><i
-                                                    class="bx bxs-trash-alt label-icon"></i></b>
+                                            <a href="#" title="Delete" class="btn btn-sm btn-danger"
+                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $category->bc_id }}').submit();">
+                                                <i class="bx bxs-trash-alt label-icon"></i>
+                                            </a>
+
+                                            <form class="d-none"
+                                                action="{{ route('admin.category.destroy', $category->bc_slug) }}"
+                                                method="POST" id="delete-form-{{ $category->bc_id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                         </td>
-                                        </form>
                                     </tr>
                                 @empty
                                 @endforelse
