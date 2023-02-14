@@ -55,7 +55,7 @@
 
                                         <td class="text-center">
                                             <a title="Edit" href="{{ route('admin.category.edit', $category->bc_slug) }}"
-                                                class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
+                                                class="btn btn-sm btn-primary"><i class="bx bx-edit-alt label-icon"></i></a>
                                             <a data-id="{{ $category->bc_slug }}" href="#" title="Delete"
                                                 class="btn btn-sm btn-danger delete-button">
                                                 <i class="bx bxs-trash-alt label-icon"></i>

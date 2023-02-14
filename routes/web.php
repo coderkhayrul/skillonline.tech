@@ -26,6 +26,7 @@ Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::resource('category', BlogCategoryController::class);
     });
+
     // Brand Route
     Route::name('admin.')->group(function () {
         Route::resource('brand', BrandController::class);
