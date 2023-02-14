@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="card">
                     <div class="mt-2 bg-white card-header">
-                        <h3>All Brands
+                        <h3>Create Brands
                             <a href="{{ route('admin.brand.index') }}"
                                 class="btn btn-sm btn-primary waves-effect btn-label waves-light" style="float: right;"><i
                                     class="bx bx-arrow-back label-icon"></i> Back</a>
