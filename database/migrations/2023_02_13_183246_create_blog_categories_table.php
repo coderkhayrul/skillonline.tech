@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('bc_url')->unique();
             $table->string('bc_slug')->unique();
             $table->integer('bc_creator')->nullable();
-            $table->string('bc_editor')->nullable();
+            $table->integer('bc_editor')->nullable();
             $table->string('bc_image')->nullable();
             $table->integer('bc_orderby')->nullable();
-            $table->integer('bc_remarks')->nullable();
+            $table->string('bc_remarks')->nullable();
             $table->integer('bc_active')->default(1)->comment('1 = active, 0 = inactive');
             $table->integer('bc_status')->default(1)->comment('1 = active, 0 = inactive');
             $table->timestamps();

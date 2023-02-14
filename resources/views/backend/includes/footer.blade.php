@@ -28,9 +28,53 @@
     <script src="{{ asset('backend') }}/assets/js/pages/datatables.init.js"></script>
 @endif
 
+<!-- toastr plugin -->
+<script src="{{ asset('backend') }}/assets/libs/toastr/build/toastr.min.js"></script>
+<script>
+    @if (Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+            case 'info':
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                };
+                toastr.info("{{ Session::get('message') }}")
+                break;
+            case 'success':
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                };
+                toastr.success("{{ Session::get('message') }}")
+                break;
+            case 'warning':
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                };
+                toastr.warning("{{ Session::get('message') }}")
+                break;
+            case 'error':
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                };
+                toastr.error("{{ Session::get('message') }}")
+                break;
+        }
+    @endif
+</script>
+
+<!-- toastr init -->
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>
 
-
+<!-- Custom Script -->
+<script src="{{ asset('backend') }}/assets/js/backend_custom.js"></script>
 
 @stack('custom-script')
 </body>

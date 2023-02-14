@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BlogCategory>
@@ -18,7 +19,7 @@ class BlogCategoryFactory extends Factory
     {
         return [
             'bc_name' => $name = fake()->company,
-            'bc_url' => $name,
+            'bc_url' => Str::slug($name, '-'),
             'bc_slug' => uniqid(),
             'bc_image' => fake()->imageUrl(220, 120, 'Category', true),
         ];
