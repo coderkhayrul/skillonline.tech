@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class BrandController extends Controller
 {
@@ -27,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.brand.create');
     }
 
     /**
@@ -38,7 +40,28 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'brand_name' => 'required',
+        ]);
+        // Brand Image Upload
+        if ($request->hasFile('brand_image')) {
+            $image = $request->file('brand_image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/brand/' . $image_name);
+            $brand_image = 'media/brand/' . $image_name;
+        } else {
+            $brand_image = null;
+        }
+        $insert = Brand::create([
+            'brand_name' => $request->brand_name,
+            'brand_url' => Str::slug($request->brand_name, '-'),
+            'brand_slug' => uniqid(),
+            'brand_orderby' => $request->brand_orderby,
+            'brand_remarks' => $request->brand_remarks,
+            'brand_feature' => $request->brand_feature,
+            'brand_image' =>  $brand_image,
+        ]);
+        return redirect()->back();
     }
 
     /**

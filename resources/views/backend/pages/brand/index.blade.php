@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="mt-2 bg-white card-header">
                         <h3>All Brands
-                            <a href="#"
+                            <a href="{{ route('admin.brand.create') }}"
                                 class="btn btn-sm btn-success waves-effect btn-label waves-light" style="float: right;"><i
                                     class="bx bx-plus-medical label-icon"></i> Create</a>
                         </h3>
