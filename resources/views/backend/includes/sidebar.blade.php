@@ -20,6 +20,12 @@
                         <span key="t-category">Category</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.brand.index') }}" class="waves-effect">
+                        <i class="bx bxs-purchase-tag  "></i>
+                        <span key="t-category">Brand</span>
+                    </a>
+                </li>
 
 
 
