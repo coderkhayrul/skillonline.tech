@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -90,9 +91,13 @@ class BlogCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $category = BlogCategory::where('bc_slug', $slug)->first();
+        if (!$category) {
+            return redirect()->route('admin.category.index');
+        }
+        return view('backend.pages.category.edit', compact('category'));
     }
 
     /**
@@ -102,9 +107,49 @@ class BlogCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $category = BlogCategory::where('bc_slug', $slug)->first();
+        if (!$category) {
+            abort(404);
+        }
+
+        $request->validate([
+            'bc_name' => 'required',
+        ]);
+        // Category Image Upload
+        if ($request->hasFile('bc_image')) {
+            if (File::exists($request->old_image)) {
+                File::delete($request->old_image);
+            }
+            $image = $request->file('bc_image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/category/' . $image_name);
+            $bc_image = 'media/category/' . $image_name;
+        } else {
+            $bc_image = $request->old_image;
+        }
+
+        $update = BlogCategory::where('bc_slug', $slug)->update([
+            'bc_name' => $request->bc_name,
+            'bc_url' => Str::slug($request->bc_name, '-'),
+            'bc_slug' => uniqid(),
+            'bc_orderby' => $request->bc_orderby,
+            'bc_remarks' => $request->bc_remarks,
+            'bc_image' =>  $bc_image,
+        ]);
+        if ($update) {
+            $notification = array(
+                'message' => 'Category Updated Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Category Updated Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -113,8 +158,27 @@ class BlogCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $category = BlogCategory::where('bc_slug', $slug)->first();
+        if (!$category) {
+            abort(404);
+        }
+        if (File::exists($category->bc_image)) {
+            File::delete($category->bc_image);
+        }
+        $delete = BlogCategory::where('bc_slug', $slug)->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'Category Deleted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Category Deleted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 }

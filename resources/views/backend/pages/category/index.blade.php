@@ -52,12 +52,14 @@
                                         <td>{{ $category->bc_name }}</td>
                                         <td>{{ $category->bc_url }}</td>
                                         <td>{{ $category->bc_active }}</td>
+
                                         <td class="text-center">
-                                            <a title="Edit" href="#" class="btn btn-sm btn-primary"><i
-                                                    class="bx bxs-pencil label-icon"></i></a>
-                                            <a title="Delete" href="#" class="btn btn-sm btn-danger"><i
-                                                    class="bx bxs-trash-alt label-icon"></i></a>
+                                            <a title="Edit" href="{{ route('admin.category.edit', $category->bc_slug) }}"
+                                                class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
+                                            <a href="#" title="Delete" class="btn btn-sm btn-danger"><i
+                                                    class="bx bxs-trash-alt label-icon"></i></b>
                                         </td>
+                                        </form>
                                     </tr>
                                 @empty
                                 @endforelse
