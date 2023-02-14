@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::prefix('admin')->group(function () {
     // BLog Category Route
     Route::name('admin.')->group(function () {
         Route::resource('category', BlogCategoryController::class);
+    });
+    // Brand Route
+    Route::name('admin.')->group(function () {
+        Route::resource('brand', BrandController::class);
     });
 });
 
