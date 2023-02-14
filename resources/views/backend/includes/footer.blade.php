@@ -73,29 +73,6 @@
 <!-- Sweet Alerts js -->
 <script src="{{ asset('backend') }}/assets/libs/sweetalert2/sweetalert2.min.js"></script>
 <!-- Sweet Alerts Script -->
-<script>
-    $(document).on("click", "#delete", function(e) {
-        e.preventDefault();
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: !0,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            confirmButtonClass: "btn btn-success mt-2",
-            cancelButtonClass: "btn btn-danger ms-2 mt-2",
-            buttonsStyling: !1
-        }).then(function(t) {
-            t.value ? window.location.href = link : t.dismiss === Swal.DismissReason.cancel &&
-                Swal.fire({
-                    title: "Cancelled",
-                    text: "Your imaginary file is safe :)",
-                    icon: "error"
-                })
-        })
-    });
-</script>
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>
 
 <!-- Custom Script -->
