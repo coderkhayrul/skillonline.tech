@@ -39,8 +39,6 @@
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-
-
                             <tbody>
                                 @forelse ($brands as $brand)
                                     <tr>
@@ -53,7 +51,7 @@
                                         <td>{{ $brand->brand_url }}</td>
                                         <td>{{ $brand->brand_active }}</td>
                                         <td class="text-center">
-                                            <a title="Edit" href="#"
+                                            <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
                                                 class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
                                             <a href="#" title="Delete" class="btn btn-sm btn-danger"><i
                                                     class="bx bxs-trash-alt label-icon"></i></b>
