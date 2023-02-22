@@ -61,6 +61,17 @@ class BrandController extends Controller
             'brand_feature' => $request->brand_feature,
             'brand_image' =>  $brand_image,
         ]);
+        if ($insert) {
+            $notification = array(
+                'message' => 'Brand Created Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'brand Created Failed',
+                'alert-type' => 'error'
+            );
+        }
         return redirect()->back();
     }
 
@@ -81,9 +92,13 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $brand = Brand::where('brand_slug', $slug)->first();
+        if (!$brand) {
+            return redirect()->route('admin.brand.index');
+        }
+        return view('backend.pages.brand.edit', compact('brand'));
     }
 
     /**
@@ -93,9 +108,51 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $brand = Brand::where('brand_slug', $slug)->first();
+        if (!$brand) {
+            abort(404);
+        }
+
+        $request->validate([
+            'brand_name' => 'required',
+        ]);
+
+        // Brand Image Upload
+        if ($request->hasFile('brand_image')) {
+            if (File::exists($request->old_image)) {
+                File::delete($request->old_image);
+            }
+            $image = $request->file('brand_image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/brand/' . $image_name);
+            $brand_image = 'media/brand/' . $image_name;
+        } else {
+            $brand_image = $request->old_image;
+        }
+
+        $update = Brand::where('brand_slug', $slug)->update([
+            'brand_name' => $request->brand_name,
+            'brand_url' => Str::slug($request->brand_name, '-'),
+            'brand_slug' => uniqid(),
+            'brand_orderby' => $request->brand_orderby,
+            'brand_remarks' => $request->brand_remarks,
+            'brand_feature' => $request->brand_feature,
+            'brand_image' =>  $brand_image,
+        ]);
+        if ($update) {
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'brand Updated Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
