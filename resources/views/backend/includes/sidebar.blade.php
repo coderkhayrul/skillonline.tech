@@ -14,15 +14,15 @@
                         <span key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{ request()->is('admin/category*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.category.index') }}" class="waves-effect">
                         <i class="bx bx-layer"></i>
                         <span key="t-category">Category</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{ request()->is('admin/brand*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.brand.index') }}" class="waves-effect">
-                        <i class="bx bxs-purchase-tag  "></i>
+                        <i class="bx bxs-purchase-tag"></i>
                         <span key="t-category">Brand</span>
                     </a>
                 </li>

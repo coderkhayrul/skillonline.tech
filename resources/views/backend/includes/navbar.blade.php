@@ -178,9 +178,13 @@
                     <a class="dropdown-item" href="#"><i class="align-middle bx bx-user font-size-16 me-1"></i>
                         <span key="t-profile">Profile</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i
+                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                             class="align-middle bx bx-power-off font-size-16 me-1 text-danger"></i> <span
                             key="t-logout">Logout</span></a>
+                    <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

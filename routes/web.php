@@ -19,9 +19,9 @@ Route::get('/', function () {
 // <=============== BACKEND ROUTE LIST ============>
 // -------------------------------------------------
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::prefix('admin')->middleware('auth')->group(function () {
 
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // BLog Category Route
     Route::prefix('category')->controller(BlogCategoryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
@@ -31,7 +31,6 @@ Route::prefix('admin')->group(function () {
         Route::put('/{slug}', 'update')->name('admin.category.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.category.destroy');
     });
-
 
     // Brand Route
     Route::prefix('brand')->controller(BrandController::class)->group(function () {

@@ -1,6 +1,6 @@
 @extends('backend.layouts.layout')
 
-@section('admin-title', 'brands')
+@section('admin-title', 'Brand')
 
 @section('backend-content')
     <div class="page-content">
@@ -52,14 +52,14 @@
                                         <td class="text-center">
                                             <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
                                                 class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
-                                            <a id="delete" href="#" title="Delete" class="btn btn-sm btn-danger"><i
+                                            <a id="delete" href="{{ route('admin.brand.destroy', $brand->brand_slug) }}"
+                                                title="Delete" class="btn btn-sm btn-danger"><i
                                                     class="bx bxs-trash-alt label-icon"></i></b>
                                         </td>
                                         </form>
                                     </tr>
                                 @empty
                                 @endforelse
-
                             </tbody>
                         </table>
                     </div>
