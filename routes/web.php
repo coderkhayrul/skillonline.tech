@@ -23,9 +23,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     // BLog Category Route
-    Route::name('admin.')->group(function () {
-        Route::resource('category', BlogCategoryController::class);
+    Route::prefix('category')->group(function () {
+        Route::get('/', [BlogCategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('/create', [BlogCategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('/', [BlogCategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('edit/{slug}', [BlogCategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::put('/{slug}', [BlogCategoryController::class, 'update'])->name('admin.category.update');
+        Route::get('/delete/{slug}', [BlogCategoryController::class, 'destroy'])->name('admin.category.destroy');
     });
+
 
     // Brand Route
     Route::name('admin.')->group(function () {

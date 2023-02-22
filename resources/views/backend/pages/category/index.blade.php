@@ -56,16 +56,10 @@
                                         <td class="text-center">
                                             <a title="Edit" href="{{ route('admin.category.edit', $category->bc_slug) }}"
                                                 class="btn btn-sm btn-primary"><i class="bx bx-edit-alt label-icon"></i></a>
-                                            <a data-id="{{ $category->bc_slug }}" href="#" title="Delete"
-                                                class="btn btn-sm btn-danger delete-button">
+                                            <a href="{{ route('admin.category.destroy', $category->bc_slug) }}"
+                                                title="Delete" class="btn btn-sm btn-danger" id="delete">
                                                 <i class="bx bxs-trash-alt label-icon"></i>
                                             </a>
-                                            <form class="d-none"
-                                                action="{{ route('admin.category.destroy', $category->bc_slug) }}"
-                                                method="POST" id="delete-form-{{ $category->bc_slug }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
                                         </td>
                                     </tr>
                                 @empty

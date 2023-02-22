@@ -72,7 +72,7 @@ class BrandController extends Controller
                 'alert-type' => 'error'
             );
         }
-        return redirect()->back();
+        return redirect()->back()->with($notification);
     }
 
     /**
