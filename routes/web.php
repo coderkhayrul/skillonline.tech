@@ -23,20 +23,29 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     // BLog Category Route
-    Route::prefix('category')->group(function () {
-        Route::get('/', [BlogCategoryController::class, 'index'])->name('admin.category.index');
-        Route::get('/create', [BlogCategoryController::class, 'create'])->name('admin.category.create');
-        Route::post('/', [BlogCategoryController::class, 'store'])->name('admin.category.store');
-        Route::get('edit/{slug}', [BlogCategoryController::class, 'edit'])->name('admin.category.edit');
-        Route::put('/{slug}', [BlogCategoryController::class, 'update'])->name('admin.category.update');
-        Route::get('/delete/{slug}', [BlogCategoryController::class, 'destroy'])->name('admin.category.destroy');
+    Route::prefix('category')->controller(BlogCategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.category.index');
+        Route::get('/create', 'create')->name('admin.category.create');
+        Route::post('/', 'store')->name('admin.category.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.category.edit');
+        Route::put('/{slug}', 'update')->name('admin.category.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.category.destroy');
     });
 
 
     // Brand Route
-    Route::name('admin.')->group(function () {
-        Route::resource('brand', BrandController::class);
+    Route::prefix('brand')->controller(BrandController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.brand.index');
+        Route::get('/create', 'create')->name('admin.brand.create');
+        Route::post('/', 'store')->name('admin.brand.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.brand.edit');
+        Route::put('/{slug}', 'update')->name('admin.brand.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.brand.destroy');
     });
+
+    // Route::name('admin.')->group(function () {
+    //     Route::resource('brand', BrandController::class);
+    // });
 });
 
 
