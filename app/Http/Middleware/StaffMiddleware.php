@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class StaffMiddleware
 {
@@ -17,7 +18,7 @@ class StaffMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 'staff') {
+        if (Auth::check() && Str::lower(Auth::user()->role->role_name) == 'staff') {
             return $next($request);
         }
     }

@@ -14,6 +14,18 @@
                         <span key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('admin/user*') ? 'mm-active' : '' }}">
+                    <a href="#" class="waves-effect">
+                        <i class="bx bx-group"></i>
+                        <span key="t-role">User</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('admin/role*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.role.index') }}" class="waves-effect">
+                        <i class="bx bx-lock"></i>
+                        <span key="t-role">Role</span>
+                    </a>
+                </li>
                 <li class="{{ request()->is('admin/category*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.category.index') }}" class="waves-effect">
                         <i class="bx bx-layer"></i>

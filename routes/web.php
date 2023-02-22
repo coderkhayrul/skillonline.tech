@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BrandController;
@@ -22,6 +23,16 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    // Role Route
+    Route::prefix('role')->controller(RoleController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.role.index');
+        Route::get('/create', 'create')->name('admin.role.create');
+        Route::post('/', 'store')->name('admin.role.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.role.edit');
+        Route::put('/{slug}', 'update')->name('admin.role.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.role.destroy');
+    });
+
     // BLog Category Route
     Route::prefix('category')->controller(BlogCategoryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.category.index');

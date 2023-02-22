@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Str::lower(Auth::user()->role->role_name) == 'admin') {
+        if (Auth::check() && Str::lower(Auth::user()->role->role_name) == 'user') {
             return $next($request);
         }
     }
