@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Social Media</h4>
+                        <h4 class="mb-sm-0 font-size-18">Social Media Setting</h4>
                     </div>
                 </div>
             </div>
@@ -17,14 +17,15 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body px-2">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form role="form" action="{{ Route('admin.setting.socialmedia.update') }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="modal-body">
                                 <div class="row  align-items-center p-3">
                                     <div class="col-md-4 pb-3">
                                         <div class="form-group mb-2">
-                                            <label class="form-label">Facebook Url</label>
-                                            <input class="form-control" type="text" name="sm_facebook" placeholder="Enter Facebook Url"
+                                            <label class="form-label">Facebook Link</label>
+                                            <input class="form-control" type="text" name="sm_facebook" placeholder="Enter Facebook Link"
                                                 value="{{ $socialmedia->sm_facebook }}">
                                         </div>
                                     </div>
@@ -37,15 +38,15 @@
                                     </div>
                                     <div class="col-md-4 pb-3">
                                         <div class="form-group mb-2">
-                                            <label class="form-label">Twitter Url</label>
-                                            <input class="form-control" type="text" name="sm_twitter" placeholder="Enter Twitter Url"
+                                            <label class="form-label">Twitter Link</label>
+                                            <input class="form-control" type="text" name="sm_twitter" placeholder="Enter Twitter Link"
                                                 value="{{ $socialmedia->sm_twitter }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pb-3">
                                         <div class="form-group mb-2">
                                             <label class="form-label">Linkedin Link</label>
-                                            <input class="form-control" type="text" name="sm_linkedin" placeholder="Enter Linkedin Url"
+                                            <input class="form-control" type="text" name="sm_linkedin" placeholder="Enter Linkedin Link"
                                                 value="{{ $socialmedia->sm_linkedin }}">
                                         </div>
                                     </div>

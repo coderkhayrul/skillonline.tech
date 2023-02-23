@@ -57,6 +57,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::prefix('setting')->group(function (){
         Route::prefix('socialmedia')->controller(SocialMediaController::class)->group(function () {
             Route::get('/', 'index')->name('admin.setting.socialmedia.index');
+            Route::put('/update', 'update')->name('admin.setting.socialmedia.update');
         });
     });
 

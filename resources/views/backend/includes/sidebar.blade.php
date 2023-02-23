@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-cog "></i>
                         <span key="t-category">Setting</span>
                     </a>

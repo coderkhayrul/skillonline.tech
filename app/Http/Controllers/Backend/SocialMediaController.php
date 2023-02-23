@@ -69,9 +69,21 @@ class SocialMediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $socialmedia= SocialMedia::first();
+        $socialmedia-> sm_facebook = $request->sm_facebook;
+        $socialmedia-> sm_twitter = $request->sm_twitter;
+        $socialmedia-> sm_youtube = $request->sm_youtube;
+        $socialmedia-> sm_instagram = $request->sm_instagram;
+        $socialmedia-> sm_linkedin = $request->sm_linkedin;
+        $socialmedia-> sm_pinterest = $request->sm_pinterest;
+        $socialmedia->update();
+        $notification = array(
+                'message' => 'SocialMedia Updated Successfully',
+                'alert-type' => 'success'
+            );
+        return redirect()->back()->with($notification);
     }
 
     /**
