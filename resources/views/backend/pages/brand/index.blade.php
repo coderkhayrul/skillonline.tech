@@ -50,14 +50,38 @@
                                                     alt="">
                                             </td>
                                             <td width="40%">{{ $brand->brand_name }}</td>
-                                            <td width="15%">{{ $brand->brand_feature }}</td>
-                                            <td width="15%">{{ $brand->brand_active }}</td>
+                                            <td width="15%">
+                                                @if ($brand->brand_feature == 1)
+                                                    <a href="{{ route('admin.brand.deactive', $brand->brand_slug) }}"
+                                                        class="btn btn-sm btn-success waves-effect waves-light">
+                                                        <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.brand.active', $brand->brand_slug) }}"
+                                                        class="btn btn-sm btn-danger waves-effect waves-light">
+                                                        <i class="bx bxs-dislike font-size-16 align-middle me-2"></i>In
+                                                        active
+                                                    </a>
+                                                @endif
+                                            <td width="15%" class="text-center">
+                                                @if ($brand->brand_active == 1)
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-success waves-effect waves-light">
+                                                        <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
+                                                    </a>
+                                                @else
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-danger waves-effect waves-light">
+                                                        <i class="bx bxs-dislike font-size-16 align-middle me-2"></i> In
+                                                        Active
+                                                    </a>
+                                                @endif
                                             <td width="15%" class="text-center">
                                                 <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
                                                     class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
                                                 <a id="delete" href="{{ route('admin.brand.destroy', $brand->brand_slug) }}"
                                                     title="Delete" class="btn btn-sm btn-danger"><i
-                                                        class="bx bxs-trash-alt label-icon"></i></b>
+                                                        class="bx bxs-trash-alt label-icon"></i></a>
                                             </td>
                                             </form>
                                         </tr>

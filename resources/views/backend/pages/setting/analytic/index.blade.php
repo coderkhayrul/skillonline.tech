@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body px-2">
-                            <form action="{{ Route('admin.setting.analytic.iupdate') }}" method="POST">
+                            <form action="{{ Route('admin.setting.analytic.update') }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                  <div class="modal-body">

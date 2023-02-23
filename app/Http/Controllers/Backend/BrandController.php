@@ -182,4 +182,14 @@ class BrandController extends Controller
         // }
         // return redirect()->back()->with($notification);
     }
+    public function active($slug)
+    {
+        $brand = Brand::where('brand_slug', $slug)->update(['brand_feature' => 1]);
+        return redirect()->back();
+    }
+    public function deactive($slug)
+    {
+        $brand = Brand::where('brand_slug', $slug)->update(['brand_feature' => 0]);
+        return redirect()->back();
+    }
 }
