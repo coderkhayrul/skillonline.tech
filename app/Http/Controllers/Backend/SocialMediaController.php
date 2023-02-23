@@ -71,14 +71,14 @@ class SocialMediaController extends Controller
      */
     public function update(Request $request)
     {
-        $socialmedia= SocialMedia::first();
-        $socialmedia-> sm_facebook = $request->sm_facebook;
-        $socialmedia-> sm_twitter = $request->sm_twitter;
-        $socialmedia-> sm_youtube = $request->sm_youtube;
-        $socialmedia-> sm_instagram = $request->sm_instagram;
-        $socialmedia-> sm_linkedin = $request->sm_linkedin;
-        $socialmedia-> sm_pinterest = $request->sm_pinterest;
-        $socialmedia->update();
+        $socialmedia= SocialMedia::where('sm_id', 1)->update([
+        'sm_facebook' => $request->sm_facebook,
+        'sm_twitter' => $request->sm_twitter,
+        'sm_youtube' => $request->sm_youtube,
+        'sm_instagram' => $request->sm_instagram,
+        'sm_linkedin' => $request->sm_linkedin,
+        'sm_pinterest' => $request->sm_pinterest,
+        ]);
         $notification = array(
                 'message' => 'SocialMedia Updated Successfully',
                 'alert-type' => 'success'

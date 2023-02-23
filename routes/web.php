@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\SocialMediaController;
+use App\Http\Controllers\Backend\BasicAnalyticController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::prefix('socialmedia')->controller(SocialMediaController::class)->group(function () {
             Route::get('/', 'index')->name('admin.setting.socialmedia.index');
             Route::put('/update', 'update')->name('admin.setting.socialmedia.update');
+        });
+        Route::prefix('analytic')->controller(BasicAnalyticController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.setting.analytic.index');
+            Route::put('/update', 'update')->name('admin.setting.analytic.iupdate');
         });
     });
 

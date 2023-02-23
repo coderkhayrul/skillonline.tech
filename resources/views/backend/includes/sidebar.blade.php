@@ -50,6 +50,13 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.setting.analytic.index') }}" class="waves-effect">
+                                 <span key="t-socialmedia">Analytic</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
 
