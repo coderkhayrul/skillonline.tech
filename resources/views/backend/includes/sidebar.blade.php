@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="{{ request()->is('admin/user*') ? 'mm-active' : '' }}">
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.user.index') }}" class="waves-effect">
                         <i class="bx bx-group"></i>
                         <span key="t-role">User</span>
                     </a>
@@ -44,9 +44,9 @@
                         <span key="t-category">Setting</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}" >
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
                             <a href="{{ route('admin.setting.socialmedia.index') }}" class="waves-effect">
-                                 <span key="t-socialmedia">Social Media</span>
+                                <span key="t-socialmedia">Social Media</span>
                             </a>
                         </li>
                     </ul>
