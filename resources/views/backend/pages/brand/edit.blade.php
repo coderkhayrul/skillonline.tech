@@ -49,13 +49,6 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Features</label>
-                                        <div class="col-sm-9">
-                                            <input name="brand_feature" type="number" class="form-control"
-                                                placeholder="Features" value="{{ $brand->brand_feature }}">
-                                        </div>
-                                    </div>
-                                    <div class="mb-4 row">
                                         <label for="" class="col-sm-3 col-form-label">Image</label>
                                         <div class="col-sm-9">
                                             <input id="input_image" name="brand_image" type="file" class="form-control">

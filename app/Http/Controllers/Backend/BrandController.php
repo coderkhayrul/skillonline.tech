@@ -58,7 +58,6 @@ class BrandController extends Controller
             'brand_slug' => uniqid(),
             'brand_orderby' => $request->brand_orderby,
             'brand_remarks' => $request->brand_remarks,
-            'brand_feature' => $request->brand_feature,
             'brand_image' =>  $brand_image,
         ]);
         if ($insert) {
@@ -138,7 +137,6 @@ class BrandController extends Controller
             'brand_slug' => uniqid(),
             'brand_orderby' => $request->brand_orderby,
             'brand_remarks' => $request->brand_remarks,
-            'brand_feature' => $request->brand_feature,
             'brand_image' =>  $brand_image,
         ]);
         if ($update) {

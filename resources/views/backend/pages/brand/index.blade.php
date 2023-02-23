@@ -19,49 +19,53 @@
                 </div>
             </div> --}}
             <!-- end page title -->
-            <div class="row">
-                <div class="card">
-                    <div class="mt-2 bg-white card-header">
-                        <h3>All Brands
-                            <a href="{{ route('admin.brand.create') }}"
-                                class="btn btn-sm btn-success waves-effect btn-label waves-light" style="float: right;"><i
-                                    class="bx bx-plus-medical label-icon"></i> Create</a>
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <table id="datatable" class="table table-bordered dt-responsive wrap w-100">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Url</th>
-                                    <th>Active</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($brands as $brand)
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="mt-2 bg-white card-header">
+                            <h3>All Brands
+                                <a href="{{ route('admin.brand.create') }}"
+                                    class="btn btn-sm btn-success waves-effect btn-label waves-light" style="float: right;"><i
+                                        class="bx bx-plus-medical label-icon"></i> Create</a>
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatable" class="table table-bordered dt-responsive wrap w-100">
+                                <thead>
                                     <tr>
-                                        <td width="10%" class="text-center">
-                                            <img class="rounded avatar-md" src="{{ asset($brand->brand_image) }}"
-                                                alt="">
-                                        </td>
-                                        <td>{{ $brand->brand_name }}</td>
-                                        <td>{{ $brand->brand_url }}</td>
-                                        <td>{{ $brand->brand_active }}</td>
-                                        <td class="text-center">
-                                            <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
-                                                class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
-                                            <a id="delete" href="{{ route('admin.brand.destroy', $brand->brand_slug) }}"
-                                                title="Delete" class="btn btn-sm btn-danger"><i
-                                                    class="bx bxs-trash-alt label-icon"></i></b>
-                                        </td>
-                                        </form>
+                                        <td>#</td>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>feature</th>
+                                        <th>Active</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
-                                @empty
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @forelse ($brands as $key => $brand)
+                                        <tr>
+                                            <td width="5%" class="text-center">{{ $key + 1 }}</td>
+                                            <td width="10%" class="text-center">
+                                                <img class="rounded avatar-md" src="{{ asset($brand->brand_image) }}"
+                                                    alt="">
+                                            </td>
+                                            <td width="40%">{{ $brand->brand_name }}</td>
+                                            <td width="15%">{{ $brand->brand_feature }}</td>
+                                            <td width="15%">{{ $brand->brand_active }}</td>
+                                            <td width="15%" class="text-center">
+                                                <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
+                                                    class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
+                                                <a id="delete" href="{{ route('admin.brand.destroy', $brand->brand_slug) }}"
+                                                    title="Delete" class="btn btn-sm btn-danger"><i
+                                                        class="bx bxs-trash-alt label-icon"></i></b>
+                                            </td>
+                                            </form>
+                                        </tr>
+                                    @empty
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

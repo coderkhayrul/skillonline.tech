@@ -6,7 +6,7 @@
     <div class="page-content">
         <div class="container-fluid">
             <!-- end page title -->
-            <div class="row">
+            <div class="row ">
                 <div class="card">
                     <div class="mt-2 bg-white card-header">
                         <h3>Create Brands
@@ -22,7 +22,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Name</label>
+                                        <label for="brand_name" class="col-sm-3 col-form-label">Name</label>
                                         <div class="col-sm-9">
                                             <input name="brand_name" type="text"
                                                 class="form-control @error('brand_name') is-invalid @enderror"
@@ -33,28 +33,21 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Order By</label>
+                                        <label for="brand_orderby" class="col-sm-3 col-form-label">Order By</label>
                                         <div class="col-sm-9">
                                             <input name="brand_orderby" type="number" class="form-control"
                                                 placeholder="Order By">
                                         </div>
                                     </div>
                                     <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Remarks</label>
+                                        <label for="brand_remarks" class="col-sm-3 col-form-label">Remarks</label>
                                         <div class="col-sm-9">
                                             <input name="brand_remarks" type="text" class="form-control"
                                                 placeholder="Remarks">
                                         </div>
                                     </div>
                                     <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Features</label>
-                                        <div class="col-sm-9">
-                                            <input name="brand_feature" type="number" class="form-control"
-                                                placeholder="Features">
-                                        </div>
-                                    </div>
-                                    <div class="mb-4 row">
-                                        <label for="" class="col-sm-3 col-form-label">Image</label>
+                                        <label for="input_image" class="col-sm-3 col-form-label">Image</label>
                                         <div class="col-sm-9">
                                             <input id="input_image" name="brand_image" type="file" class="form-control">
                                         </div>
