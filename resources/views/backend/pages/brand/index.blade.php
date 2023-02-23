@@ -1,6 +1,6 @@
 @extends('backend.layouts.layout')
 
-@section('admin-title', 'brands')
+@section('admin-title', 'Brand')
 
 @section('backend-content')
     <div class="page-content">
@@ -43,8 +43,7 @@
                                 @forelse ($brands as $brand)
                                     <tr>
                                         <td width="10%" class="text-center">
-                                            <img class="rounded avatar-md"
-                                                src="{{ asset($brand->brand_image) }}"
+                                            <img class="rounded avatar-md" src="{{ asset($brand->brand_image) }}"
                                                 alt="">
                                         </td>
                                         <td>{{ $brand->brand_name }}</td>
@@ -53,13 +52,14 @@
                                         <td class="text-center">
                                             <a title="Edit" href="{{ route('admin.brand.edit', $brand->brand_slug) }}"
                                                 class="btn btn-sm btn-primary"><i class="bx bxs-pencil label-icon"></i></a>
-
+                                            <a id="delete" href="{{ route('admin.brand.destroy', $brand->brand_slug) }}"
+                                                title="Delete" class="btn btn-sm btn-danger"><i
+                                                    class="bx bxs-trash-alt label-icon"></i></b>
                                         </td>
                                         </form>
                                     </tr>
                                 @empty
                                 @endforelse
-
                             </tbody>
                         </table>
                     </div>
