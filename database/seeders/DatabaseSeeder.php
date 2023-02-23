@@ -30,10 +30,18 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'), //password
         ]);
 
-        Role::create([
-            'role_name' => 'Admin',
-            'role_slug' => uniqid(),
-        ]);
+        $roles = [
+            'Admin',
+            'Editor',
+            'User',
+        ];
+
+        foreach ($roles as $key => $role) {
+            Role::create([
+                'role_name' => $role,
+                'role_slug' => uniqid(),
+            ]);
+        }
 
         BlogCategory::factory(20)->create();
         Brand::factory(20)->create();
