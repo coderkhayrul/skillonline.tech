@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.brand.edit');
         Route::put('/{slug}', 'update')->name('admin.brand.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.brand.destroy');
+    });
+    //setting
+    Route::prefix('setting')->group(function (){
+        Route::prefix('socialmedia')->controller(SocialMediaController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.setting.socialmedia.index');
+        });
     });
 
     // Route::name('admin.')->group(function () {

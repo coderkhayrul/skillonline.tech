@@ -37,5 +37,9 @@ class DatabaseSeeder extends Seeder
 
         BlogCategory::factory(20)->create();
         Brand::factory(20)->create();
+
+        $this->call([
+            SetupSeeder::class,
+        ]);
     }
 }

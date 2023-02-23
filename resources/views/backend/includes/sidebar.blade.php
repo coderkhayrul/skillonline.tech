@@ -35,8 +35,21 @@
                 <li class="{{ request()->is('admin/brand*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.brand.index') }}" class="waves-effect">
                         <i class="bx bxs-purchase-tag"></i>
-                        <span key="t-category">Brand</span>
+                        <span key="t-brand">Brand</span>
                     </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="bx bx-cog "></i>
+                        <span key="t-category">Setting</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}" >
+                            <a href="{{ route('admin.setting.socialmedia.index') }}" class="waves-effect">
+                                 <span key="t-socialmedia">Social Media</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
 
