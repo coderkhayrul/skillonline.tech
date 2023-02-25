@@ -1,6 +1,6 @@
 @extends('backend.layouts.layout')
 
-@section('admin-title', 'tags')
+@section('admin-title', 'Tags')
 
 @section('backend-content')
     <div class="page-content">

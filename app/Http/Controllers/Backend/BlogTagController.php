@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogTagController extends Controller
 {
@@ -26,7 +27,7 @@ class BlogTagController extends Controller
      */
     public function create()
     {
-
+        return view('backend.pages.tag.create');
     }
 
     /**
@@ -37,7 +38,27 @@ class BlogTagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tag_name' => 'required',
+        ]);
+        $insert = BlogTag::create([
+            'tag_name' => $request->tag_name,
+            'tag_url' => Str::slug($request->tag_name, '-'),
+            'tag_slug' => uniqid(),
+            'tag_orderby' => $request->tag_orderby,
+        ]);
+        if ($insert) {
+            $notification = array(
+                'message' => 'Tag Inserted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Tag Inserted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
