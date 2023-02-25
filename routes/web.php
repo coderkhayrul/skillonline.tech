@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BasicAnalyticController;
+use App\Http\Controllers\Backend\BlogTagController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.category.edit');
         Route::put('/{slug}', 'update')->name('admin.category.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.category.destroy');
+    });
+    // Blog Tag Route
+    Route::prefix('tag')->controller(BlogTagController::class)->group(function (){
+        Route::get('/', 'index')->name('admin.tag.index');
+        Route::get('/create', 'create')->name('admin.tag.create');
+        Route::post('/', 'store')->name('admin.tag.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.tag.edit');
+        Route::put('/{slug}', 'update')->name('admin.tag.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.tag.destroy');
     });
 
     // Brand Route

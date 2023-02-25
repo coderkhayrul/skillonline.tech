@@ -38,6 +38,12 @@
                         <span key="t-brand">Brand</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('admin/tag*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.tag.index') }}" class="waves-effect">
+                        <i class="bx bxs-purchase-tag"></i>
+                        <span key="t-brand">Tag</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-cog "></i>

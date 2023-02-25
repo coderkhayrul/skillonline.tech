@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use App\Models\Brand;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\BlogTag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,6 +46,7 @@ class DatabaseSeeder extends Seeder
 
         BlogCategory::factory(20)->create();
         Brand::factory(20)->create();
+        BlogTag::factory(20)->create();
 
         $this->call([
             SetupSeeder::class,
