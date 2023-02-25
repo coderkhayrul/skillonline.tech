@@ -59,6 +59,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.tag.edit');
         Route::put('/{slug}', 'update')->name('admin.tag.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.tag.destroy');
+        // Tag Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.tag.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.tag.deactive');
     });
 
     // Brand Route

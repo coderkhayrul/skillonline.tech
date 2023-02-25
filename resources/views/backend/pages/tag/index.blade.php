@@ -33,13 +33,13 @@
                                             <td width="50%">{{ $tag->tag_name }}</td>
                                             <td width="10%">{{ $tag->tag_orderby }}</td>
                                             <td width="15%" class="text-center">
-                                                @if ($tag->tag_active == 0)
-                                                    <a href="#"
+                                                @if ($tag->tag_status == 1)
+                                                    <a href="{{ Route('admin.tag.deactive', $tag->tag_slug) }}"
                                                         class="btn btn-sm btn-success waves-effect waves-light">
                                                         <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
                                                     </a>
                                                 @else
-                                                    <a href="#"
+                                                    <a href="{{ Route('admin.tag.active', $tag->tag_slug) }}"
                                                         class="btn btn-sm btn-danger waves-effect waves-light">
                                                         <i class="bx bxs-dislike font-size-16 align-middle me-2"></i> In
                                                         Active
@@ -48,10 +48,10 @@
                                             </td>
                                             <td width="20%" class="text-center">
                                                 <a title="Edit"
-                                                    href="#"
+                                                    href="{{ Route('admin.tag.edit', $tag->tag_slug) }}"
                                                     class="btn btn-sm btn-primary"><i
                                                         class="bx bx-edit-alt label-icon"></i></a>
-                                                <a href="#"
+                                                <a href="{{ Route('admin.tag.destroy', $tag->tag_slug) }}"
                                                     title="Delete" class="btn btn-sm btn-danger" id="delete">
                                                     <i class="bx bxs-trash-alt label-icon"></i>
                                                 </a>

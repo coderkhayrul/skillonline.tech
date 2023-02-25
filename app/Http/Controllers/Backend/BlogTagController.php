@@ -16,7 +16,7 @@ class BlogTagController extends Controller
      */
     public function index()
     {
-        $tags = BlogTag::where('tag_status', 1)->latest()->get();
+        $tags = BlogTag::latest()->get();
         return view('backend.pages.tag.index', compact('tags'));
     }
 
@@ -78,9 +78,13 @@ class BlogTagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $tags= BlogTag::where('tag_slug', $slug)->first();
+        if(!$tags){
+            return redirect()->route('admin.tag.index');
+        }
+        return view('backend.pages.tag.edit', compact('tags'));
     }
 
     /**
@@ -90,9 +94,33 @@ class BlogTagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $tags= BlogTag::where('tag_slug', $slug)->first();
+        if(!$tags){
+            abort(404);
+        }
+        $request->validate([
+            'tag_name' => 'required',
+        ]);
+        $update =BlogTag::where('tag_slug', $slug)->update([
+            'tag_name' => $request->tag_name,
+            'tag_url' => Str::slug($request->tag_name, '-'),
+            'tag_slug' => uniqid(),
+            'tag_orderby' => $request->tag_orderby,
+        ]);
+        if ($update) {
+            $notification = array(
+                'message' => 'Tag Updated Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Tag Updated Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -101,8 +129,36 @@ class BlogTagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $tags= BlogTag::where('tag_slug', $slug)->first();
+        if(!$tags){
+            abort(404);
+        }
+        $delete =BlogTag::where('tag_slug', $slug)->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'Tag Deleted Successfully',
+                'alert-type' => 'success'
+            );
+        }
+        else {
+            $notification = array(
+                'message' => 'Tag Deleted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
+    }
+
+    public function active($slug)
+    {
+        $tags = BlogTag::where('tag_slug', $slug)->update(['tag_status' => 1]);
+        return redirect()->back();
+    }
+    public function deactive($slug)
+    {
+        $tags = BlogTag::where('tag_slug', $slug)->update(['tag_status' => 0]);
+        return redirect()->back();
     }
 }
