@@ -5,6 +5,7 @@ namespace Database\Seeders;
 //use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\SocialMedia;
 use App\Models\BasicAnalytic;
+use App\Models\BasicSetting;
 use Illuminate\Database\Seeder;
 
 class SetupSeeder extends Seeder
@@ -22,6 +23,9 @@ class SetupSeeder extends Seeder
         ]);
         BasicAnalytic::create([
             'google_analytic' => '',
+        ]);
+        BasicSetting::create([
+            'bs_company' => 'skillonline',
         ]);
 
     }

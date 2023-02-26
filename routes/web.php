@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BasicAnalyticController;
 use App\Http\Controllers\Backend\BlogTagController;
+use App\Http\Controllers\Backend\BasicSettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::prefix('analytic')->controller(BasicAnalyticController::class)->group(function () {
             Route::get('/', 'index')->name('admin.setting.analytic.index');
             Route::put('/update', 'update')->name('admin.setting.analytic.update');
+        });
+        Route::prefix('basicsetting')->controller(BasicSettingController::class)->group(function (){
+            Route::get('/', 'index')->name('admin.setting.basicsetting.index');
+            Route::put('/update', 'update')->name('admin.setting.basicsetting.update');
         });
     });
 

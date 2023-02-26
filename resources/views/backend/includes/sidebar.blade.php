@@ -63,6 +63,13 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.setting.basicsetting.index') }}" class="waves-effect">
+                                 <span key="t-socialmedia">Basic</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
 
