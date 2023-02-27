@@ -34,7 +34,7 @@
                 </li>
                 <li class="{{ request()->is('admin/brand*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.brand.index') }}" class="waves-effect">
-                        <i class="bx bxs-purchase-tag"></i>
+                        <i class="bx bxl-squarespace "></i>
                         <span key="t-brand">Brand</span>
                     </a>
                 </li>
@@ -42,6 +42,12 @@
                     <a href="{{ route('admin.tag.index') }}" class="waves-effect">
                         <i class="bx bxs-purchase-tag"></i>
                         <span key="t-brand">Tag</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('admin/page*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.page.index') }}" class="waves-effect">
+                        <i class="bx bx-news"></i>
+                        <span key="t-brand">Page</span>
                     </a>
                 </li>
                 <li>

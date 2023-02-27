@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BasicAnalyticController;
 use App\Http\Controllers\Backend\BlogTagController;
 use App\Http\Controllers\Backend\BasicSettingController;
+use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         // brand feature Status Update
         Route::get('/active/{slug}', 'active')->name('admin.brand.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.brand.deactive');
+    });
+    // Page Route
+    Route::prefix('page')->controller(PageController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.page.index');
+        Route::get('/create', 'create')->name('admin.page.create');
+        Route::post('/', 'store')->name('admin.page.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.page.edit');
+        Route::put('/{slug}', 'update')->name('admin.page.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.page.destroy');
     });
     //setting
     Route::prefix('setting')->group(function () {
