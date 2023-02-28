@@ -26,7 +26,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.page.create');
     }
 
     /**
@@ -37,7 +37,27 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'page_name' => 'required',
+        ]);
+        $insert = Page::create([
+            'page_name' => $request->page_name,
+            'page_url' => $request->page_url,
+            'page_slug' => uniqid(),
+            'page_content' => $request->page_content,
+        ]);
+        if ($insert) {
+            $notification = array(
+                'message' => 'Page Inserted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Page Inserted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**

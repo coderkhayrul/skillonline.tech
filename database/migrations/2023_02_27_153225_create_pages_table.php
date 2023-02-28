@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('page_id');
             $table->string('page_name');
-            $table->string('page_url')->unique();
+            $table->string('page_url')->nullable();
             $table->string('page_slug')->unique();
             $table->text('page_content')->nullable();
             $table->string('page_creator')->nullable();
