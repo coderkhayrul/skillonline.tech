@@ -50,6 +50,12 @@
                         <span key="t-brand">Page</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('admin/banner*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.banner.index') }}" class="waves-effect">
+                        <i class="bx bx-chalkboard "></i>
+                        <span key="t-brand">Banner</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-cog "></i>

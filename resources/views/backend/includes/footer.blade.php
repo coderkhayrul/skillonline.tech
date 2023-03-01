@@ -97,8 +97,6 @@
         })
     });
 </script>
-<script src="{{ asset('backend') }}/assets/js/app.js"></script>
-
 <!-- Custom Script -->
 <script src="{{ asset('backend') }}/assets/js/backend_custom.js"></script>
 
