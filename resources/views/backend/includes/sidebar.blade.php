@@ -17,7 +17,7 @@
                 <li class="{{ request()->is('admin/user*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.user.index') }}" class="waves-effect">
                         <i class="bx bx-group"></i>
-                        <span key="t-role">User</span>
+                        <span key="t-user">User</span>
                     </a>
                 </li>
                 <li class="{{ request()->is('admin/role*') ? 'mm-active' : '' }}">
@@ -41,25 +41,25 @@
                 <li class="{{ request()->is('admin/tag*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.tag.index') }}" class="waves-effect">
                         <i class="bx bxs-purchase-tag"></i>
-                        <span key="t-brand">Tag</span>
+                        <span key="t-tag">Tag</span>
                     </a>
                 </li>
                 <li class="{{ request()->is('admin/page*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.page.index') }}" class="waves-effect">
                         <i class="bx bx-news"></i>
-                        <span key="t-brand">Page</span>
+                        <span key="t-page">Page</span>
                     </a>
                 </li>
                 <li class="{{ request()->is('admin/banner*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.banner.index') }}" class="waves-effect">
                         <i class="bx bx-chalkboard "></i>
-                        <span key="t-brand">Banner</span>
+                        <span key="t-banner">Banner</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-cog "></i>
-                        <span key="t-category">Setting</span>
+                        <span key="t-setting">Setting</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
@@ -71,14 +71,14 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
                             <a href="{{ route('admin.setting.analytic.index') }}" class="waves-effect">
-                                 <span key="t-socialmedia">Analytic</span>
+                                 <span key="t-analytic">Analytic</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
                             <a href="{{ route('admin.setting.basicsetting.index') }}" class="waves-effect">
-                                 <span key="t-socialmedia">Basic</span>
+                                 <span key="t-basic">Basic</span>
                             </a>
                         </li>
                     </ul>

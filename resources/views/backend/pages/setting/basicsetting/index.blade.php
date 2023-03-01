@@ -54,29 +54,11 @@
                                     </div>
                                     <div class="col-md-6 text-center">
                                         <div class="form-group mb-2">
-                                            <label class="form-label" style="float: left;">Footer Logo</label>
-                                            <input name="old_bs_f_logo" type="hidden" value="{{ $setting->bs_f_logo }}">
-                                            <input id="input_image" class="form-control" type="file" name="bs_f_logo">
-                                                <img id="input_image_preview" class="mt-3" width="120px" height="120px"
-                                                    src="{{ empty($setting->bs_f_logo) ? asset('media/no-image.png') : asset($setting->bs_f_logo) }}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 text-center">
-                                        <div class="form-group mb-2">
-                                            <label class="form-label" style="float: left;">Fabicon Logo</label>
-                                            <input name="old_bs_fabicon" type="hidden" value="{{ $setting->bs_fabicon }}">
-                                            <input id="input_image" class="form-control" type="file" name="bs_fabicon">
-                                                <img id="input_image_preview" class="mt-3" width="120px" height="120px"
-                                                    src="{{ empty($setting->bs_fabicon) ? asset('media/no-image.png') : asset($setting->bs_fabicon) }}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 text-center">
-                                        <div class="form-group mb-2">
                                             <label class="form-label" style="float: left;">Favicon Logo</label>
                                             <input name="old_bs_favicon" type="hidden" value="{{ $setting->bs_favicon }}">
-                                            <input id="input_image" class="form-control" type="file" name="bs_favicon">
-                                                 <img id="input_image_preview" class="mt-3" width="120px" height="120px"
-                                                    src="{{ empty($setting->bs_favicon) ? asset('media/no-image.png') : asset($setting->bs_favicon) }}" alt="">
+                                            <input id="input_image-2" class="form-control" type="file" name="bs_favicon">
+                                            <img id="input_image_preview-2" class="mt-3" width="120px" height="120px"
+                                                 src="{{ empty($setting->bs_favicon) ? asset('media/no-image.png') : asset($setting->bs_favicon) }}" alt="">
                                         </div>
                                     </div>
                                 </div>
