@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/assets/libs/toastr/build/toastr.min.css">
     <!-- Sweet Alert-->
     <link href="{{ asset('backend') }}/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <!-- SummerNote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- App Css-->
     <link href="{{ asset('backend') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     @if (Route::currentRouteName() == 'admin.category.index'|| Route::currentRouteName() == 'admin.brand.index' || Route::currentRouteName() == 'admin.tag.index' || Route::currentRouteName() == 'admin.page.index')

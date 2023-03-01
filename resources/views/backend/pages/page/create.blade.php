@@ -42,7 +42,7 @@
                                         <div class="mb-4 row">
                                             <label for="" class="col-sm-3 col-form-label">Page Content</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" name="page_content" id="pageContent"></textarea>
+                                                <textarea class="form-control" name="page_content" id="summernote"></textarea>
                                             </div>
                                         </div>
                                         <div class="row justify-content-end">
