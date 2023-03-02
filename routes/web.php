@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\BlogTagController;
 use App\Http\Controllers\Backend\BasicSettingController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 // <=============== FRONTEND ROUTE LIST ============>
 // -------------------------------------------------
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 
 // -------------------------------------------------
 // <=============== BACKEND ROUTE LIST ============>
