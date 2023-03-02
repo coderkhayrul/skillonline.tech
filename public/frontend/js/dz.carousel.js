@@ -26,10 +26,7 @@ jQuery(window).on('load', function() {
 			pagination: {
 				el: ".swiper-pagination-five",
 				clickable: true,
-			},
-			thumbs: {
-			  swiper: swiper,
-			},
+			}
 		});
 	}
 
@@ -41,7 +38,7 @@ jQuery(window).on('load', function() {
 			//freeMode: true,
 			watchSlidesProgress: true,
 			autoplay: {
-			   delay: 1500,
+            delay: 1500,
 			},
 		});
 		var swiper2 = new Swiper(".main-swiper-two", {
