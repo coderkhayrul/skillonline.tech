@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('bs_url')->nullable();
             $table->string('bs_title')->nullable();
             $table->string('bs_logo')->nullable();
-            $table->string('bs_f_logo')->nullable();
-            $table->string('bs_fabicon')->nullable();
             $table->string('bs_favicon')->nullable();
             $table->string('bs_status')->default(1);
             $table->timestamps();

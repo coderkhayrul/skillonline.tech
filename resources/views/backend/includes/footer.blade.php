@@ -97,8 +97,15 @@
         })
     });
 </script>
-<script src="{{ asset('backend') }}/assets/js/app.js"></script>
+<!-- SummerNote Script -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script type="text/javascript">
+    $('#summernote').summernote({
+        height: 200
+    });
+</script>
 
+<script src="{{ asset('backend') }}/assets/js/app.js"></script>
 <!-- Custom Script -->
 <script src="{{ asset('backend') }}/assets/js/backend_custom.js"></script>
 

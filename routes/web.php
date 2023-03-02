@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BasicAnalyticController;
 use App\Http\Controllers\Backend\BlogTagController;
 use App\Http\Controllers\Backend\BasicSettingController;
 use App\Http\Controllers\Backend\PageController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +87,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.page.edit');
         Route::put('/{slug}', 'update')->name('admin.page.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.page.destroy');
+    });
+    // Banner Route
+    Route::prefix('banner')->controller(BannerController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.banner.index');
+        Route::get('/create', 'create')->name('admin.banner.create');
+        Route::post('/', 'store')->name('admin.banner.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.banner.edit');
+        Route::put('/{slug}', 'update')->name('admin.banner.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.banner.destroy');
     });
     //setting
     Route::prefix('setting')->group(function () {
