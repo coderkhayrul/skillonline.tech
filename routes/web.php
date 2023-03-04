@@ -52,6 +52,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.category.edit');
         Route::put('/{slug}', 'update')->name('admin.category.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.category.destroy');
+        // BLog Category Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.category.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.category.deactive');
     });
     // Blog Tag Route
     Route::prefix('tag')->controller(BlogTagController::class)->group(function (){
