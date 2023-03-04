@@ -75,6 +75,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/{slug}', 'update')->name('admin.brand.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.brand.destroy');
         // brand feature Status Update
+        Route::get('/on/{slug}', 'on')->name('admin.brand.on');
+        Route::get('/off/{slug}', 'off')->name('admin.brand.off');
+        // brand Status Update
         Route::get('/active/{slug}', 'active')->name('admin.brand.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.brand.deactive');
     });
