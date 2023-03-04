@@ -161,26 +161,26 @@ class BrandController extends Controller
      */
     public function destroy($slug)
     {
-        // $brand = Brand::where('brand_slug', $slug)->first();
-        // if (!$brand) {
-        //     abort(404);
-        // }
-        // if (File::exists($brand->brand_image)) {
-        //     File::delete($brand->brand_image);
-        // }
-        // $delete = Brand::where('brand_slug', $slug)->delete();
-        // if ($delete) {
-        //     $notification = array(
-        //         'message' => 'Brand Deleted Successfully',
-        //         'alert-type' => 'success'
-        //     );
-        // } else {
-        //     $notification = array(
-        //         'message' => 'Brand Deleted Failed',
-        //         'alert-type' => 'error'
-        //     );
-        // }
-        // return redirect()->back()->with($notification);
+        $brand = Brand::where('brand_slug', $slug)->first();
+        if (!$brand) {
+            abort(404);
+        }
+        if (File::exists($brand->brand_image)) {
+            File::delete($brand->brand_image);
+        }
+        $delete = Brand::where('brand_slug', $slug)->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'Brand Deleted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Brand Deleted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
     public function on($slug)
     {
