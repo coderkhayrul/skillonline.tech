@@ -21,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 // -------------------------------------------------
 
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
+Route::get('/tutorials', [WebsiteController::class, 'allTutorials'])->name('web.tutorials');
+Route::get('/books', [WebsiteController::class, 'allBooks'])->name('web.books');
+Route::get('/smart-device', [WebsiteController::class, 'allSmartDevice'])->name('web.smart.device');
+
+// Brand Items
+Route::get('/brands', [WebsiteController::class, 'allBrand'])->name('web.brands');
+Route::get('/brands/{brand_name}', [WebsiteController::class, 'brandWiseShow'])->name('web.brand.wise.show');
+
 
 // -------------------------------------------------
 // <=============== BACKEND ROUTE LIST ============>

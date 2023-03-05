@@ -14,7 +14,7 @@
 	<meta name="description" content="Bookland-Book Store Ecommerce Website" />
 	<meta property="og:title" content="Bookland-Book Store Ecommerce Website" />
 	<meta property="og:description" content="Bookland-Book Store Ecommerce Website" />
-	<meta property="og:image" content="../../makaanlelo.com/tf_products_007/bookland/xhtml/social-image.html" />
+	<meta property="og:image" content="#" />
 	<meta name="format-detection" content="telephone=no">
 
 	<!-- FAVICONS ICON -->

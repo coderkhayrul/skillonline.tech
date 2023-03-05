@@ -11,4 +11,19 @@ class WebsiteController extends Controller
     {
         return view('frontend.layouts.layout');
     }
+
+    public function allTutorials()
+    {
+        //
+    }
+
+    public function allBooks()
+    {
+        //
+    }
+
+    public function allSmartDevice()
+    {
+        //
+    }
 }
