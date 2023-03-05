@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="keywords" content="" />
 	<meta name="author" content="DexignZone" />
 	<meta name="robots" content="" />
@@ -19,10 +21,7 @@
 	<link rel="icon" type="image/x-icon" href="{{ asset('frontend') }}/images/favicon.png" />
 
 	<!-- PAGE TITLE HERE -->
-	<title>Skillonline Education Website</title>
-
-	<!-- MOBILE SPECIFIC -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ config('app.name', 'Laravel') }}</title>
 
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">

@@ -36,6 +36,16 @@
                 </form>
                 <ul class="nav navbar-nav">
                     <li><a href="#"><span>Home</span></a></li>
+                    <li class="sub-menu-down"><a href="javascript:void(0);"><span>Smart Device</span></a>
+                        <ul class="sub-menu">
+                            <li><a href="mobiles.html">Smart Phone</a></li>
+                            <li><a href="mobiles.html">Smart Band</a></li>
+                            <li><a href="mobiles.html">Smart Watch</a></li>
+                            <li><a href="mobiles.html">Feature Phone</a></li>
+                            <li><a href="mobiles.html">Tablet</a></li>
+                            <li><a href="mobiles.html">Upcoming Phone</a></li>
+                        </ul>
+                    </li>
                     <li class="sub-menu-down"><a href="javascript:void(0);"><span>Tutorials</span></a>
                         <ul class="sub-menu">
                             <li><a href="tutorials.html">IT & Software</a></li>
