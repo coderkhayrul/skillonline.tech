@@ -26,6 +26,128 @@
                         <span key="t-role">Role</span>
                     </a>
                 </li>
+
+                <!-- SMART DEVICE MENU -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-cog "></i>
+                        <span key="t-smart-device">Smart Device</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
+                            <a href="#" class="waves-effect">
+                                <span key="t-device-category">All Category</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-all-device">All Device</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-create-device">Create Device</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- TUTORIAL MENU -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-cog "></i>
+                        <span key="t-tutorial">Tutorial</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
+                            <a href="#" class="waves-effect">
+                                <span key="t-tutorial-category">All Category</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-all-tutorial">All Tutorial</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-create-tutorial">Create Tutorial</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- BOOKS MENU -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-cog "></i>
+                        <span key="t-tutorial">Books</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
+                            <a href="#" class="waves-effect">
+                                <span key="t-book-category">All Category</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-all-book">All Books</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-create-book">Create Books</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- NEWS MENU -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-cog "></i>
+                        <span key="t-tutorial">News</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
+                            <a href="#" class="waves-effect">
+                                <span key="t-news-category">All Category</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-all-news">All Books</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="waves-effect">
+                                <span key="t-create-news">Create news</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
                 <li class="{{ request()->is('admin/category*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.category.index') }}" class="waves-effect">
                         <i class="bx bx-layer"></i>
