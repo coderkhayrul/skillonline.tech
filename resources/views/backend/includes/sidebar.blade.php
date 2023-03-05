@@ -30,12 +30,12 @@
                 <!-- SMART DEVICE MENU -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-cog "></i>
+                        <i class="bx bx-devices"></i>
                         <span key="t-smart-device">Smart Device</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
-                            <a href="#" class="waves-effect">
+                            <a href="{{ route('admin.device.category.index') }}" class="waves-effect">
                                 <span key="t-device-category">All Category</span>
                             </a>
                         </li>
@@ -59,7 +59,7 @@
                 <!-- TUTORIAL MENU -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-cog "></i>
+                        <i class="bx bxs-videos"></i>
                         <span key="t-tutorial">Tutorial</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -89,8 +89,8 @@
                 <!-- BOOKS MENU -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-cog "></i>
-                        <span key="t-tutorial">Books</span>
+                        <i class="bx bxs-book-content"></i>
+                        <span key="t-books">Books</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
@@ -119,8 +119,8 @@
                 <!-- NEWS MENU -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-cog "></i>
-                        <span key="t-tutorial">News</span>
+                        <i class="bx bxs-news"></i>
+                        <span key="t-news">News</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
@@ -144,9 +144,6 @@
                         </li>
                     </ul>
                 </li>
-
-
-
 
                 <li class="{{ request()->is('admin/category*') ? 'mm-active' : '' }}">
                     <a href="{{ route('admin.category.index') }}" class="waves-effect">

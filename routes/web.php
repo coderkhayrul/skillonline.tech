@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\Device\DeviceCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
@@ -58,6 +59,28 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/', 'index')->name('admin.role.index');
     });
 
+//    -------------------------------------------
+//    <!--  SMART DEVICE FEATURED ROUTE START -->
+//    -------------------------------------------
+//    DEVICE CATEGORY ROUTE
+    Route::prefix('device-category')->controller(DeviceCategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.device.category.index');
+        Route::get('/create', 'create')->name('admin.device.category.create');
+        Route::post('/', 'store')->name('admin.device.category.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.device.category.edit');
+        Route::put('/{slug}', 'update')->name('admin.device.category.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.device.category.destroy');
+        // BLog Category Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.device.category.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.device.category.deactive');
+    });
+
+//    -------------------------------------------
+//    <!--  SMART DEVICE FEATURED ROUTE END -->
+//    -------------------------------------------
+
+
+
     // BLog Category Route
     Route::prefix('category')->controller(BlogCategoryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
@@ -82,7 +105,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/active/{slug}', 'active')->name('admin.tag.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.tag.deactive');
     });
-
     // Brand Route
     Route::prefix('brand')->controller(BrandController::class)->group(function () {
         Route::get('/', 'index')->name('admin.brand.index');
