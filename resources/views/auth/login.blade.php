@@ -76,7 +76,7 @@
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card overflow-hidden">
                         <div class="card-body pt-0">
-                            <h3 class="text-center pt-4 text-primary">SKILL ONLINE</h3>
+                            <h3 class="text-center pt-4 text-warning">SKILL ONLINE</h3>
                             <div class="py-4">
                                 <form class="form-horizontal" action="{{ route('login') }}" method="POST">
                                     @csrf
@@ -111,7 +111,7 @@
                                     </div>
 
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log
+                                        <button class="btn btn-warning waves-effect waves-light" type="submit">Log
                                             In</button>
                                     </div>
                                     @if (Route::has('password.request'))
