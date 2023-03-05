@@ -52,25 +52,24 @@
                                             <td width="40%">{{ $brand->brand_name }}</td>
                                             <td width="15%">
                                                 @if ($brand->brand_feature == 1)
+                                                    <a href="{{ route('admin.brand.off', $brand->brand_slug) }}"
+                                                        class="btn btn-sm btn-success waves-effect waves-light">
+                                                        <i class="bx bx-like font-size-16 align-middle me-2"></i> On
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.brand.on', $brand->brand_slug) }}"
+                                                        class="btn btn-sm btn-danger waves-effect waves-light">
+                                                        <i class="bx bxs-dislike font-size-16 align-middle me-2"></i>Off
+                                                    </a>
+                                                @endif
+                                            <td width="15%" class="text-center">
+                                                @if ($brand->brand_active == 1)
                                                     <a href="{{ route('admin.brand.deactive', $brand->brand_slug) }}"
                                                         class="btn btn-sm btn-success waves-effect waves-light">
                                                         <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
                                                     </a>
                                                 @else
                                                     <a href="{{ route('admin.brand.active', $brand->brand_slug) }}"
-                                                        class="btn btn-sm btn-danger waves-effect waves-light">
-                                                        <i class="bx bxs-dislike font-size-16 align-middle me-2"></i>In
-                                                        active
-                                                    </a>
-                                                @endif
-                                            <td width="15%" class="text-center">
-                                                @if ($brand->brand_active == 1)
-                                                    <a href="#"
-                                                        class="btn btn-sm btn-success waves-effect waves-light">
-                                                        <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
-                                                    </a>
-                                                @else
-                                                    <a href="#"
                                                         class="btn btn-sm btn-danger waves-effect waves-light">
                                                         <i class="bx bxs-dislike font-size-16 align-middle me-2"></i> In
                                                         Active

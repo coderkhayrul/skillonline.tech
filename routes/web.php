@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\BlogTagController;
 use App\Http\Controllers\Backend\BasicSettingController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 // <=============== FRONTEND ROUTE LIST ============>
 // -------------------------------------------------
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 
 // -------------------------------------------------
 // <=============== BACKEND ROUTE LIST ============>
@@ -53,6 +52,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('edit/{slug}', 'edit')->name('admin.category.edit');
         Route::put('/{slug}', 'update')->name('admin.category.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.category.destroy');
+        // BLog Category Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.category.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.category.deactive');
     });
     // Blog Tag Route
     Route::prefix('tag')->controller(BlogTagController::class)->group(function (){
@@ -76,6 +78,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/{slug}', 'update')->name('admin.brand.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.brand.destroy');
         // brand feature Status Update
+        Route::get('/on/{slug}', 'on')->name('admin.brand.on');
+        Route::get('/off/{slug}', 'off')->name('admin.brand.off');
+        // brand Status Update
         Route::get('/active/{slug}', 'active')->name('admin.brand.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.brand.deactive');
     });

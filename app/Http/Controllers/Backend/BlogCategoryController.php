@@ -181,4 +181,15 @@ class BlogCategoryController extends Controller
         }
         return redirect()->back()->with($notification);
     }
+    //Category active status
+    public function active($slug)
+    {
+        $category = BlogCategory::where('bc_slug', $slug)->update(['bc_active' => 1]);
+        return redirect()->back();
+    }
+    public function deactive($slug)
+    {
+        $category = BlogCategory::where('bc_slug', $slug)->update(['bc_active' => 0]);
+        return redirect()->back();
+    }
 }

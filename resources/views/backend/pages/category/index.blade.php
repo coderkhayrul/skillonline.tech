@@ -54,12 +54,12 @@
                                             <td width="50%">{{ $category->bc_name }}</td>
                                             <td width="15%" class="text-center">
                                                 @if ($category->bc_active == 1)
-                                                    <a href="#"
+                                                    <a href="{{ route('admin.category.deactive', $category->bc_slug) }}"
                                                         class="btn btn-sm btn-success waves-effect waves-light">
                                                         <i class="bx bx-like font-size-16 align-middle me-2"></i> Active
                                                     </a>
                                                 @else
-                                                    <a href="#"
+                                                    <a href="{{ route('admin.category.active', $category->bc_slug) }}"
                                                         class="btn btn-sm btn-danger waves-effect waves-light">
                                                         <i class="bx bxs-dislike font-size-16 align-middle me-2"></i> In
                                                         Active
