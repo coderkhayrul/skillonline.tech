@@ -23,7 +23,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/tutorials', [WebsiteController::class, 'allTutorials'])->name('web.tutorials');
 Route::get('/books', [WebsiteController::class, 'allBooks'])->name('web.books');
-Route::get('/smart-device', [WebsiteController::class, 'allSmartDevice'])->name('web.smart.device');
+Route::get('/news', [WebsiteController::class, 'allNews'])->name('web.news');
+Route::get('/smart-phones', [WebsiteController::class, 'allSmartPhone'])->name('web.smart.phone');
+Route::get('/smart-bands', [WebsiteController::class, 'allSmartBand'])->name('web.smart.band');
+Route::get('/smart-watches', [WebsiteController::class, 'allSmartwatch'])->name('web.smart.watch');
+Route::get('/feature-device', [WebsiteController::class, 'allFeatureDevice'])->name('web.feature.device');
+Route::get('/smart-tablet', [WebsiteController::class, 'allSmartTablet'])->name('web.smart.tablet');
+Route::get('/upcoming/smart-device', [WebsiteController::class, 'allUpcomingDevice'])->name('web.upcoming.smart.device');
 
 // Brand Items
 Route::get('/brands', [WebsiteController::class, 'allBrand'])->name('web.brands');

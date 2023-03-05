@@ -22,8 +22,39 @@ class WebsiteController extends Controller
         //
     }
 
-    public function allSmartDevice()
+    public function allNews()
     {
         //
     }
+
+    public function allSmartPhone()
+    {
+        //
+    }
+
+    public function allSmartBand()
+    {
+        //
+    }
+
+    public function allSmartwatch()
+    {
+        //
+    }
+
+    public function allFeatureDevice()
+    {
+        //
+    }
+
+    public function allSmartTablet()
+    {
+        //
+    }
+
+    public function allUpcomingDevice()
+    {
+        //
+    }
+
 }
