@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*
-    Name: Bookland 
+    Name: Bookland
     Author: DexignZone
     Portfolio : https://themeforest.net/user/dexignzone/portfolio
-   
-    Table of Content: 
+
+    Table of Content:
 
     1. Abstract
     2. Bootstrap CSS
@@ -12,7 +12,7 @@
     4. Layout
     5. Component
     7. Pages
-    
+
 */
 @import url("../icons/fontawesome/css/all.min.css");
 @import url("../icons/flaticon/font/flaticon.css");
@@ -30919,7 +30919,7 @@ pre {
 		flex:0 0 50%;
 		display:flex;
 		align-items:center;
-		
+
 		img{
 			width:80px;
 			height:80px;
@@ -30929,10 +30929,10 @@ pre {
 		}
 	}
 	.next-post{
-		
+
 	}
 	.prev-post{
-		
+
 	}
 } */
 /* Post Next Preview */
@@ -33213,9 +33213,14 @@ pre {
 }
 
 .book-grid-row .col-book.style-2 {
-  width: 33.33%;
+  width: 33%;
   margin-bottom: 30px;
 }
+
+.book-grid-row .col-book.smart-device {
+    width: 20%;
+    margin-bottom: 30px;
+  }
 
 @media only screen and (max-width: 991px) {
   .book-grid-row .col-book.style-2 {
