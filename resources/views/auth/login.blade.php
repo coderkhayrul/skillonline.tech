@@ -84,7 +84,11 @@
                                         <label for="username" class="form-label">Email</label>
                                         <input name="email" type="email" class="form-control" id="email"
                                             placeholder="Enter email" required value="{{ old('email') }}">
-                                        <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
+                                            @error('email')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                     </div>
 
                                     <div class="mb-3">
