@@ -13,47 +13,47 @@ class WebsiteController extends Controller
 
     public function allTutorials()
     {
-        return view('frontend.tutorials');
+        return view('frontend.pages.tutorials');
     }
 
     public function allBooks()
     {
-        return view('frontend.books');
+        return view('frontend.pages.books');
     }
 
     public function allNews()
     {
-        return view('frontend.news');
+        return view('frontend.pages.news');
     }
 
     public function allSmartPhone()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
     public function allSmartBand()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
     public function allSmartwatch()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
     public function allFeatureDevice()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
     public function allSmartTablet()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
     public function allUpcomingDevice()
     {
-        return view('frontend.smartdevice');
+        return view('frontend.pages.smartdevice');
     }
 
 }
