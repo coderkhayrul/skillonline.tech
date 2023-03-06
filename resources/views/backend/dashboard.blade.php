@@ -27,7 +27,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-muted fw-medium">Orders</p>
-                                    <h4 class="mb-0">1,235</h4>
+                                    <h4 class="mb-0">0.00</h4>
                                 </div>
 
                                 <div class="flex-shrink-0 align-self-center">
@@ -47,7 +47,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-muted fw-medium">Revenue</p>
-                                    <h4 class="mb-0">$35, 723</h4>
+                                    <h4 class="mb-0">$0.00</h4>
                                 </div>
 
                                 <div class="flex-shrink-0 align-self-center ">
@@ -67,7 +67,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-muted fw-medium">Average Price</p>
-                                    <h4 class="mb-0">$16.2</h4>
+                                    <h4 class="mb-0">$0.00</h4>
                                 </div>
 
                                 <div class="flex-shrink-0 align-self-center">
@@ -87,7 +87,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-muted fw-medium">Average Price</p>
-                                    <h4 class="mb-0">$16.2</h4>
+                                    <h4 class="mb-0">$0.00</h4>
                                 </div>
 
                                 <div class="flex-shrink-0 align-self-center">
