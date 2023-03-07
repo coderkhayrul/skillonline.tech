@@ -102,14 +102,14 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
                             <a href="#" class="waves-effect">
-                                <span key="t-all-book">All Books</span>
+                                <span key="t-all-book">All Book</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
                             <a href="#" class="waves-effect">
-                                <span key="t-create-book">Create Books</span>
+                                <span key="t-create-book">Create Book</span>
                             </a>
                         </li>
                     </ul>
