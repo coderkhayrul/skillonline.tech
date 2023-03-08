@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ncat_slug')->unique();
             $table->text('ncat_details')->nullable();
             $table->integer('ncat_order')->nullable();
-            $table->string('ncat_thumbnail');
+            $table->string('ncat_thumbnail')->nullable();
             $table->integer('ncat_status')->default(1)->comment('1 = active, 0 = inactive');
             $table->timestamps();
         });

@@ -29,7 +29,7 @@ class NewsCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.news.category.create');
     }
 
     /**
@@ -40,7 +40,38 @@ class NewsCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ncat_name' => 'required',
+        ]);
+        // Brand Image Upload
+        if ($request->hasFile('ncat_thumbnail')) {
+            $image = $request->file('ncat_thumbnail');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/category/' . $image_name);
+            $ncat_thumbnail = 'media/news/category/' . $image_name;
+        } else {
+            $ncat_thumbnail = null;
+        }
+        $insert = NewsCategory::create([
+            'ncat_name' => $request->ncat_name,
+            'ncat_url' => Str::slug($request->ncat_name, '-'),
+            'ncat_slug' => uniqid(),
+            'ncat_order' => $request->ncat_order,
+            'ncat_details' => $request->ncat_details,
+            'ncat_thumbnail' =>  $ncat_thumbnail,
+        ]);
+        if ($insert) {
+            $notification = array(
+                'message' => 'NewsCategory Created Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'NewsCategory Created Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**

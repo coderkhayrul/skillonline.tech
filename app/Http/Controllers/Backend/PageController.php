@@ -42,7 +42,7 @@ class PageController extends Controller
         ]);
         $insert = Page::create([
             'page_name' => $request->page_name,
-            'page_url' => $request->page_url,
+            'page_url' => 'https://onlineskill.com/'.$request->page_url,
             'page_slug' => uniqid(),
             'page_content' => $request->page_content,
         ]);
