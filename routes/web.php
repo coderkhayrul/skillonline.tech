@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\Device\DeviceCategoryController;
+use App\Http\Controllers\Backend\News\NewsCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
@@ -79,6 +80,19 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 //    <!--  SMART DEVICE FEATURED ROUTE END -->
 //    -------------------------------------------
 
+
+    // News Category Route
+    Route::prefix('news-category')->controller(NewsCategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.news.category.index');
+        Route::get('/create', 'create')->name('admin.news.category.create');
+        Route::post('/', 'store')->name('admin.news.category.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.news.category.edit');
+        Route::put('/{slug}', 'update')->name('admin.news.category.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.news.category.destroy');
+        // BLog Category Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.news.category.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.news.category.deactive');
+    });
 
 
     // BLog Category Route

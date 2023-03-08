@@ -35,8 +35,11 @@
                                         <div class="mb-4 row">
                                             <label for="" class="col-sm-3 col-form-label">Page Url</label>
                                             <div class="col-sm-9">
-                                                <input name="page_url" type="text" class="form-control"
-                                                    placeholder="Page Url">
+                                                <div class="input-group">
+                                                    <div class="input-group-text">https://onlineskill.com/</div>
+                                                     <input name="page_url" type="text" class="form-control"
+                                                        placeholder="Page Url">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="mb-4 row">

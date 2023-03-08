@@ -124,7 +124,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
-                            <a href="#" class="waves-effect">
+                            <a href="{{ Route('admin.news.category.index') }}" class="waves-effect">
                                 <span key="t-news-category">All Category</span>
                             </a>
                         </li>
