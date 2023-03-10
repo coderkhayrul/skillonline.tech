@@ -12,6 +12,7 @@ use App\Models\BlogTag;
 use App\Models\Page;
 use App\Models\Banner;
 use App\Models\NewsCategory;
+use App\Models\News;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
         Page::factory(5)->create();
         Banner::factory(5)->create();
         NewsCategory::factory(5)->create();
+        News::factory(5)->create();
 
         $this->call([
             SetupSeeder::class,
