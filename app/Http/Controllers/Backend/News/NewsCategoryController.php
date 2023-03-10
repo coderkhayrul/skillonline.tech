@@ -91,9 +91,13 @@ class NewsCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $category = NewsCategory::where('ncat_slug', $slug)->first();
+        if(!$category) {
+            return redirect()->route('admin.news.category.index');
+        }
+        return view('backend.pages.news.category.edit', compact('category'));
     }
 
     /**
@@ -103,9 +107,49 @@ class NewsCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $category = NewsCategory::where('ncat_slug', $slug)->first();
+        if (!$category) {
+            abort(404);
+        }
+
+        $request->validate([
+            'ncat_name' => 'required',
+        ]);
+        //  Image Upload
+        if ($request->hasFile('ncat_thumbnail')) {
+            if (File::exists($request->old_image)) {
+                File::delete($request->old_image);
+            }
+            $image = $request->file('ncat_thumbnail');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/category/' . $image_name);
+            $ncat_thumbnail = 'media/news/category/' . $image_name;
+        }
+        else {
+            $ncat_thumbnail = $request->old_image;
+        }
+        $update = NewsCategory::where('ncat_slug', $slug)->update([
+            'ncat_name' => $request->ncat_name,
+            'ncat_url' => Str::slug($request->ncat_name, '-'),
+            'ncat_slug' => uniqid(),
+            'ncat_order' => $request->ncat_order,
+            'ncat_details' => $request->ncat_details,
+            'ncat_thumbnail' =>  $ncat_thumbnail,
+        ]);
+        if ($update) {
+            $notification = array(
+                'message' => 'NewsCategory Updated Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'NewsCategory Updated Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -114,8 +158,36 @@ class NewsCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $category = NewsCategory::where('ncat_slug', $slug)->first();
+        if(!$category){
+            abort(404);
+        }
+        if(File::exists($category->ncat_thumbnail)){
+           File::delete($category->ncat_thumbnail);
+        }
+        $delete = NewsCategory::where('ncat_slug', $slug)->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'NewsCategory Deleted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'NewsCategory Deleted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
+    }
+
+    public function active($slug){
+        $category = NewsCategory::where('ncat_slug', $slug)->update(['ncat_status' => 1]);
+        return redirect()->back();
+    }
+    public function deactive($slug){
+        $category = NewsCategory::where('ncat_slug', $slug)->update(['ncat_status' => 0]);
+        return redirect()->back();
     }
 }
