@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\Device\DeviceCategoryController;
 use App\Http\Controllers\Backend\News\NewsCategoryController;
+use App\Http\Controllers\Backend\News\NewsController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
@@ -92,6 +93,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         // BLog Category Status Update
         Route::get('/active/{slug}', 'active')->name('admin.news.category.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.news.category.deactive');
+    });
+
+    // News Route
+    Route::prefix('news')->controller(NewsController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.news.index');
+        Route::get('/create', 'create')->name('admin.news.create');
+        Route::post('/', 'store')->name('admin.news.store');
+        Route::get('edit/{slug}', 'edit')->name('admin.news.edit');
+        Route::put('/{slug}', 'update')->name('admin.news.update');
+        Route::get('/delete/{slug}', 'destroy')->name('admin.news.destroy');
+        // BLog Publish Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.news.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.news.deactive');
+        // Blog feature Status Update
+        Route::get('/on/{slug}', 'on')->name('admin.news.on');
+        Route::get('/off/{slug}', 'off')->name('admin.news.off');
     });
 
 

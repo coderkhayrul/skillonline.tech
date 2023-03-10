@@ -123,16 +123,16 @@
                         <span key="t-news">News</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li class="{{ request()->is('admin/setting/socialmedia*') ? 'mm-active' : '' }}">
+                        <li class="{{ request()->is('admin/news/category*') ? 'mm-active' : '' }}">
                             <a href="{{ Route('admin.news.category.index') }}" class="waves-effect">
                                 <span key="t-news-category">All Category</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="#" class="waves-effect">
-                                <span key="t-all-news">All Books</span>
+                        <li class="{{ request()->is('admin/news*') ? 'mm-active' : '' }}">
+                            <a href="{{ Route('admin.news.index') }}" class="waves-effect">
+                                <span key="t-all-news">All News</span>
                             </a>
                         </li>
                     </ul>
