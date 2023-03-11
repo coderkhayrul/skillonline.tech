@@ -24,7 +24,7 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- App Css-->
     <link href="{{ asset('backend') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-    @if (Route::currentRouteName() == 'admin.category.index'|| Route::currentRouteName() == 'admin.brand.index' || Route::currentRouteName() == 'admin.tag.index' || Route::currentRouteName() == 'admin.page.index' || Route::currentRouteName() == 'admin.news.category.index')
+    @if (Route::currentRouteName() == 'admin.category.index'|| Route::currentRouteName() == 'admin.brand.index' || Route::currentRouteName() == 'admin.tag.index' || Route::currentRouteName() == 'admin.page.index' || Route::currentRouteName() == 'admin.news.category.index' || Route::currentRouteName() == 'admin.news.index')
         <link href="{{ asset('backend') }}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
             rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend') }}/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\News;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -29,7 +30,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $news_categories = NewsCategory::where('ncat_status', 1)->get();
+        return view('backend.pages.news.news.create', compact('news_categories'));
     }
 
     /**
@@ -40,7 +42,50 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ncat_id' => 'required',
+            'news_title' => 'required',
+            'news_thumbnail' => 'required',
+        ]);
+        if ($request->hasFile('news_thumbnail')) {
+            $image = $request->file('news_thumbnail');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/news/' . $image_name);
+            $news_thumbnail = 'media/news/news/' . $image_name;
+        }
+        if ($request->hasFile('news_image')) {
+            $image = $request->file('news_image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/news/' . $image_name);
+            $news_image = 'media/news/news/' . $image_name;
+        }
+        else{
+            $news_image= null;
+        }
+        $insert= News::create([
+            'news_author_id' => $request->news_author_id,
+            'ncat_id' => $request->ncat_id,
+            'news_title' => $request->news_title,
+            'news_url' => Str::slug($request->news_title, '-'),
+            'news_slug' => uniqid(),
+            'news_thumbnail' => $news_thumbnail,
+            'news_image' => $news_image,
+            'news_shortDetails' => $request->news_shortDetails,
+            'news_details' => $request->news_details,
+            'news_tags' => $request->news_tags,
+        ]);
+        if ($insert) {
+            $notification = array(
+                'message' => 'News Created Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'News Created Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
 
     /**
