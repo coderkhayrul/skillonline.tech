@@ -105,9 +105,13 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $news= News::where('news_slug', $slug)->first();
+        if(!$news){
+            return redirect()->route('admin.news.index');
+        }
+        return view('backend.pages.news.news.edit', compact('news'));
     }
 
     /**
@@ -117,9 +121,63 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $news= News::where('news_slug', $slug)->first();
+        if(!$news){
+            abort(404);
+        }
+        $request->validate([
+            'news_title' => 'required',
+            'news_thumbnail' => 'required',
+        ]);
+        if ($request->hasFile('news_thumbnail')) {
+            if (File::exists($request->old_news_thumbnail)) {
+                File::delete($request->old_news_thumbnail);
+            }
+            $image = $request->file('news_thumbnail');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/news/' . $image_name);
+            $news_thumbnail = 'media/news/news/' . $image_name;
+        }
+        else{
+            $news_thumbnail = $request->old_news_thumbnail;
+        }
+        if ($request->hasFile('news_image')) {
+            if (File::exists($request->old_news_image)) {
+                File::delete($request->old_news_image);
+            }
+            $image = $request->file('news_image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save('media/news/news/' . $image_name);
+            $news_image = 'media/news/news/' . $image_name;
+        }
+        else{
+            $news_image = $request->old_news_image;
+        }
+        $update= News::where('news_slug', $slug)->update([
+            'news_author_id' => $request->news_author_id,
+            'news_title' => $request->news_title,
+            'news_url' => Str::slug($request->news_title, '-'),
+            'news_slug' => uniqid(),
+            'news_thumbnail' => $news_thumbnail,
+            'news_image' => $news_image,
+            'news_shortDetails' => $request->news_shortDetails,
+            'news_details' => $request->news_details,
+            'news_tags' => $request->news_tags,
+        ]);
+        // if ($update) {
+        //     $notification = array(
+        //         'message' => 'News Updated Successfully',
+        //         'alert-type' => 'success'
+        //     );
+        // } else {
+        //     $notification = array(
+        //         'message' => 'News Updated Failed',
+        //         'alert-type' => 'error'
+        //     );
+        // }
+        // return redirect()->back()->with($notification);
     }
 
     /**
@@ -128,9 +186,28 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $news = News::where('news_slug', $slug)->first();
+        if(!$news){
+            abort(404);
+        }
+        if(File::exists($news->news_thumbnail)){
+           File::delete($news->news_thumbnail);
+        }
+        $delete = News::where('news_slug', $slug)->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'News Deleted Successfully',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'News Deleted Failed',
+                'alert-type' => 'error'
+            );
+        }
+        return redirect()->back()->with($notification);
     }
     public function active($slug){
         $news = News::where('news_slug', $slug)->update(['news_publish' => 1]);

@@ -137,8 +137,8 @@
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="#" class="waves-effect">
+                        <li class="{{ request()->is('admin/news/create') ? 'mm-active' : '' }}">
+                            <a href="{{ Route('admin.news.create') }}" class="waves-effect">
                                 <span key="t-create-news">Create news</span>
                             </a>
                         </li>
