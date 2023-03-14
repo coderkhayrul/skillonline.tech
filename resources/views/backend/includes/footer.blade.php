@@ -100,9 +100,20 @@
 <!-- SummerNote Script -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script type="text/javascript">
-    $('#summernote').summernote({
-        height: 200
+
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 200,
+            tabsize: 2
+        });
     });
+    //
+    // $('#summernote').summernote({
+    //     height: 200
+    // });
+    // $('#summernote2').summernote({
+    //     height: 200
+    // });
 </script>
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>
 <!-- Custom Script -->

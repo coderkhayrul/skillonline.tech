@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="">News Details</label>
-                                                <textarea class="form-control" name="news_details" id="summernote">{{ $news->news_details }}</textarea>
+                                                <textarea class="form-control" name="news_details" id="summernote2">{{ $news->news_details }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="user_skill">Skills</label>
@@ -107,4 +107,13 @@
 @push('custom-script')
     <!-- tagsinput -->
     <script src="{{ asset('backend/assets/js/bootstrap-tagsinput.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote2').summernote({
+                height: 200,
+                tabsize: 2
+            });
+        });
+    </script>
+
 @endpush
