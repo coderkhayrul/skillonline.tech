@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend\News;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\NewsCategory;
@@ -15,7 +18,7 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -26,7 +29,7 @@ class NewsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -37,8 +40,8 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -118,9 +121,9 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $slug)
     {
@@ -131,7 +134,6 @@ class NewsController extends Controller
         $request->validate([
             'ncat_id' => 'required',
             'news_title' => 'required',
-            'news_thumbnail' => 'required',
         ]);
         if ($request->hasFile('news_thumbnail')) {
             if (File::exists($request->old_news_thumbnail)) {
@@ -162,25 +164,24 @@ class NewsController extends Controller
             'ncat_id' => $request->ncat_id,
             'news_title' => $request->news_title,
             'news_url' => Str::slug($request->news_title, '-'),
-            'news_slug' => uniqid(),
             'news_thumbnail' => $news_thumbnail,
             'news_image' => $news_image,
             'news_shortDetails' => $request->news_shortDetails,
             'news_details' => $request->news_details,
             'news_tags' => $request->news_tags,
         ]);
-        // if ($update) {
-        //     $notification = array(
-        //         'message' => 'News Updated Successfully',
-        //         'alert-type' => 'success'
-        //     );
-        // } else {
-        //     $notification = array(
-        //         'message' => 'News Updated Failed',
-        //         'alert-type' => 'error'
-        //     );
-        // }
-        // return redirect()->back()->with($notification);
+         if ($update) {
+             $notification = array(
+                 'message' => 'News Updated Successfully',
+                 'alert-type' => 'success'
+             );
+         } else {
+             $notification = array(
+                 'message' => 'News Updated Failed',
+                 'alert-type' => 'error'
+             );
+         }
+         return redirect()->back()->with($notification);
     }
 
     /**

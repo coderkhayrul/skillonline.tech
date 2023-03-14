@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('news_slug')->unique();
             $table->text('news_shortDetails')->nullable();
             $table->text('news_details')->nullable();
-            $table->string('news_thumbnail');
+            $table->string('news_thumbnail')->nullable();
             $table->string('news_image')->nullable();
             $table->string('news_tags')->nullable();
             $table->integer('news_publish')->default(1)->comment('1 = approve, 0 = pending');

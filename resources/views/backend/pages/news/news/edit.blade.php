@@ -26,7 +26,7 @@
                                 <input name="old_news_thumbnail" type="hidden" value="{{ $news->news_thumbnail }}">
                                 <input name="old_news_image" type="hidden" value="{{ $news->news_image }}">
                                 <div class="row">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-6">
                                         <input type="hidden"  name="news_author_id" value="{{ Auth::user()->id }}">
                                         <div class="form-group mb-2">
                                             <label for="" class="form-label">News Category Name</label>
@@ -69,7 +69,7 @@
                                                 src="{{ empty($news->news_image) ? asset('media/no-image.png') : asset($news->news_image) }}" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-6">
                                         <div class="form-group mb-2">
                                             <label for="">Short Description</label>
                                                 <textarea class="form-control" name="news_shortDetails" id="summernote">{{ $news->news_shortDetails }}</textarea>
@@ -84,15 +84,11 @@
                                                 name="news_tags" placeholder="Enter Skills" value="{{ $news->news_tags }}">
                                          </div>
                                     </div>
-                                    <div class="row justify-content-end mt-4">
-                                        <div class="col-md-2 offset-md-10 ">
-                                            <div>
-                                                <button type="submit" class="btn btn-success waves-effect waves-light">
-                                                    <i class="align-middle bx bx-sync font-size-16 me-2"></i> Update
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                <div class="row my-4 justify-content-end">
+                                    <button type="submit" class="btn btn-success waves-effect waves-light mr-5" style="width: 10%; margin-right: 12px;">
+                                        <i class="align-middle bx bx-sync font-size-16 me-2"></i> Update
+                                    </button>
                                 </div>
                             </form>
                         </div>
