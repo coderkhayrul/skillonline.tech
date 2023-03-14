@@ -49,7 +49,7 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group mb-2">
                                             <label for="">News Content</label>
-                                                <textarea class="form-control" name="ncat_details" id="summernote"></textarea>
+                                                <textarea class="form-control" name="ncat_details" id="summernote">{{ $category->ncat_details }}</textarea>
 
                                         </div>
                                     </div>

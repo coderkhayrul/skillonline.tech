@@ -111,7 +111,8 @@ class NewsController extends Controller
         if(!$news){
             return redirect()->route('admin.news.index');
         }
-        return view('backend.pages.news.news.edit', compact('news'));
+        $news_categories = NewsCategory::where('ncat_status', 1)->get();
+        return view('backend.pages.news.news.edit', compact('news', 'news_categories'));
     }
 
     /**
@@ -128,6 +129,7 @@ class NewsController extends Controller
             abort(404);
         }
         $request->validate([
+            'ncat_id' => 'required',
             'news_title' => 'required',
             'news_thumbnail' => 'required',
         ]);
@@ -157,6 +159,7 @@ class NewsController extends Controller
         }
         $update= News::where('news_slug', $slug)->update([
             'news_author_id' => $request->news_author_id,
+            'ncat_id' => $request->ncat_id,
             'news_title' => $request->news_title,
             'news_url' => Str::slug($request->news_title, '-'),
             'news_slug' => uniqid(),

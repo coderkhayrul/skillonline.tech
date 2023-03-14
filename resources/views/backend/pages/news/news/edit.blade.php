@@ -30,7 +30,15 @@
                                         <input type="hidden"  name="news_author_id" value="{{ Auth::user()->id }}">
                                         <div class="form-group mb-2">
                                             <label for="" class="form-label">News Category Name</label>
-                                            <input type="" class="form-control" name="ncat_id" value="{{ $news->ncat_id }}">
+                                            <select name="ncat_id" class="form-control @error('ncat_id') is-invalid @enderror"  id="" required>
+                                                <option label="Select Category"></option>
+                                                @foreach($news_categories as $category)
+                                                <option value="{{$category->ncat_id}}" @if($category->ncat_id == $news->ncat_id) selected @endif>{{$category->ncat_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('ncat_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="">News Title</label>
@@ -64,11 +72,11 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group mb-2">
                                             <label for="">Short Description</label>
-                                                <textarea class="form-control" name="news_shortDetails" id="summernote"></textarea>
+                                                <textarea class="form-control" name="news_shortDetails" id="summernote">{{ $news->news_shortDetails }}</textarea>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="">News Details</label>
-                                                <textarea class="form-control" name="news_details" id="summernote"></textarea>
+                                                <textarea class="form-control" name="news_details" id="summernote">{{ $news->news_details }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="user_skill">Skills</label>
