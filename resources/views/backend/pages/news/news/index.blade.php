@@ -6,7 +6,7 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="mt-2 bg-white card-header">
                             <h3>All News
